@@ -10,6 +10,19 @@ async function waitForScrollendEvent(test, target, timeoutMs = 500) {
   });
 }
 
+async function verifyScrollStopped(test, target_div) {
+  const unscaled_pause_time_in_ms = 100;
+  const x = target_div.scrollLeft;
+  const y = target_div.scrollTop;
+  return new Promise(resolve => {
+    test.step_timeout(() => {
+      assert_equals(target_div.scrollLeft, x);
+      assert_equals(target_div.scrollTop, y);
+      resolve();
+    }, unscaled_pause_time_in_ms);
+  });
+}
+
 const MAX_FRAME = 700;
 const MAX_UNCHANGED_FRAMES = 20;
 
