@@ -15,7 +15,7 @@ promise_test(async t => {
       /*config=*/ null, /*options=*/ {features: 'noopener'});
 
   await createIndexedDBForTesting(rc1, 'test_idb', 1);
-  await assertBFCache(rc1, /*shouldRestoreFromBFCache=*/ true);
+  await assertBFCacheEligibility(rc1, /*shouldRestoreFromBFCache=*/ true);
 
   // The page is ensured to be eligible for BFCache even with open connection,
   // otherwise the previous assertion will fail with PRECONDITION_FAILED.

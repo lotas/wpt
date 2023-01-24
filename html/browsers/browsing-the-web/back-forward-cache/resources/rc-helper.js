@@ -36,7 +36,9 @@ async function assert_not_bfcached(remoteContextHelper) {
 // A helper function that combines the steps of setting window property,
 // navigating away and back, and making assertion on whether BFCache is
 // supported.
-async function assertBFCache(remoteContextHelper, shouldRestoreFromBFCache) {
+// This function can be used to check if the current page is eligible for
+// BFCache.
+async function assertBFCacheEligibility(remoteContextHelper, shouldRestoreFromBFCache) {
   await prepareForBFCache(remoteContextHelper);
   // Navigate away and back.
   const newRemoteContextHelper = await remoteContextHelper.navigateToNew();
