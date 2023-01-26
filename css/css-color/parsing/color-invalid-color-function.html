@@ -41,6 +41,7 @@ test_invalid_value("color", "color(srgb 1 1 1 1 1)");  // Way too many parameter
 test_invalid_value("color", "color(srgb 1 eggs 1)");  // Bad parameters
 test_invalid_value("color", "color(srgb 1 1 1 / bacon)");  // Bad alpha
 test_invalid_value("color", "color(srgb 1 1 1 / 1 cucumber)");  // Junk after alpha
+test_invalid_value("color", "color(srgb / 0.5)");  // Omitted components
 </script>
 </body>
 </html>
