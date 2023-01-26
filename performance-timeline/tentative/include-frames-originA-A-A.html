@@ -32,12 +32,12 @@
       // Verify the number of performance entries in the child frame.
       assert_equals(childFrameEntrySize, 6, 'Child Frame should have 6 entries.');
 
-      const entries = performance.getEntries(true);
+      const entries = performance.getEntries({ includeChildFrames: true });
 
-      const navigationEntries = performance.getEntriesByType('navigation', true);
+      const navigationEntries = performance.getEntries({ entryType: "navigation", includeChildFrames: true });
 
-      const markedEntries = performance.getEntriesByName('entry-name', undefined, true);
-
+      const markedEntries = performance.getEntries(
+        { name: 'entry-name', entryType: undefined, includeChildFrames: true });
 
       // 3 entries for parent, 4 for child, 2 for grandchild.
       assert_equals(entries.length, 9, 'Total entries should be 9.');

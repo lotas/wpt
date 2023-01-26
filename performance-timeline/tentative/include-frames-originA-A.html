@@ -28,11 +28,12 @@
     // Load a child frame.
     await loadSameOriginChildFrame();
 
-    const entries = performance.getEntries(true);
+    const entries = performance.getEntries({ includeChildFrames: true });
 
-    const navigationEntries = performance.getEntriesByType('navigation', true);
+    const navigationEntries = performance.getEntries({ entryType: "navigation", includeChildFrames: true });
 
-    const markedEntries = performance.getEntriesByName('entry-name', undefined, true);
+    const markedEntries = performance.getEntries(
+      { name: 'entry-name', entryType: undefined, includeChildFrames: true });
 
     // 3 entries for parent, 2 for child.
     assert_equals(entries.length, 5, 'Total entries should be 5.');
